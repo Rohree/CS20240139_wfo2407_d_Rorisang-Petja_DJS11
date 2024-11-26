@@ -1,13 +1,13 @@
 
-import './App.css'
+import React from "react";
+import AvailableShows from "./pages/AvailableShows";
 
 function App() {
-
   return (
-    <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+    <>
+    <AvailableShows/>
+    </>
   )
 }
 
-export default App
+export default App;
