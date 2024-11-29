@@ -1,7 +1,7 @@
 import React from 'react'
 import { usePodcasts } from '../data/PodcastContext'
 import useFetchEpisodes from '../data/fetchEpisodes'
-import SeasonSelector from './Components/seasonSelector'
+import SeasonSelector from './Components/SeasonSelector'
 import EpisodeList from './Components/EpisodeList'
 import { useNavigate, useParams } from 'react-router-dom'
 
