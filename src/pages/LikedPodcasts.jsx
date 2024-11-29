@@ -3,12 +3,12 @@ import { usePodcasts } from '../data/PodcastContext';
 import { useNavigate } from 'react-router-dom';
 
 const LikedPodcasts = () => {
-  const { shows, likedShows } = usePodcasts();
+  const { shows, likedPodcasts } = usePodcasts();
   const navigate = useNavigate();
 
-  const likedPodcasts = shows.filter((show) => likedShows.includes(show.id));
+  const liked = shows.filter((show) => likedPodcasts.includes(show.id));
 
-  if (likedPodcasts.length === 0) {
+  if (liked.length === 0) {
     return (
       <div className="flex justify-center items-center h-screen bg-gray-100">
         <p className="text-xl text-gray-500">No liked podcasts yet!</p>
@@ -22,9 +22,18 @@ const LikedPodcasts = () => {
 
   return (
     <div className="bg-blue-950 min-h-screen p-6">
-      <h1 className="text-3xl font-bold text-white mb-8">Liked Podcasts</h1>
+      
+      <div className='flex justify-between'>
+      <button
+        className='text-3xl underline mb-8'
+      >Show All
+      </button>
+      <h1 className="text-3xl font-bold text-white mb-8"
+        >Liked Podcasts
+      </h1>
+        </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {likedPodcasts.map((show) => (
+        {liked.map((show) => (
           <div
             key={show.id}
             className="bg-yellow-400 text-left shadow-md rounded-lg p-4 hover:shadow-xl transition duration-300 cursor-pointer"
