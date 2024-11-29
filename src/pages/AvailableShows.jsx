@@ -1,4 +1,4 @@
-import {React, useMemo} from 'react'
+import {React, useEffect, useMemo} from 'react'
 import { usePodcasts } from '../data/PodcastContext'
 import useFetchShows from '../data/fetchShows';
 import { useNavigate } from 'react-router-dom';
@@ -17,9 +17,7 @@ const AvailableShows = () => {
           } = usePodcasts()
 
     const navigate = useNavigate()
-    
-  useFetchShows()
-  
+  useFetchShows() 
   const sortedShows = useMemo(() => {
     return isSorted 
             ? [...shows].sort((a, b) => a.title.localeCompare(b.title))
@@ -56,19 +54,19 @@ const AvailableShows = () => {
   }
 
   return (
-    <div className="bg-blue-950 min-h-screen p-6">
+    <div className="bg-white min-h-screen p-6">
       <div className='flex justify-between'>
-      <h1 className="text-3xl font-bold text-white mb-8">
+      <h1 className="text-3xl font-bold text-black mb-8">
         Available Shows
       </h1>
       <div className='flex gap-3'>
             <button 
-              className='bg-white p-2 mb-8 font-bold rounded-lg' 
+              className='bg-black text-white p-2 mb-8 font-bold rounded-lg' 
               onClick = {()=>navigate('/liked')}
               > Liked
             </button>
             <button 
-              className='bg-white p-2 mb-8 font-bold rounded-lg' 
+              className='bg-black text-white p-2 mb-8 font-bold rounded-lg' 
               onClick={toggleSort}
               > Sort A-Z 
             </button>
@@ -78,7 +76,7 @@ const AvailableShows = () => {
         {(isSorted ? sortedShows: shows).map((show) => (
           <div
             key={show.id}
-            className="bg-yellow-400 text-left shadow-md rounded-lg p-4 hover:shadow-xl transition duration-300 cursor-pointer"
+            className="bg-lime-200 text-left shadow-md rounded-lg p-4 hover:shadow-xl transition duration-300 cursor-pointer"
             onClick={() => handleShowClick(show.id)}
           >
               <img 
@@ -86,12 +84,14 @@ const AvailableShows = () => {
                 className="rounded-lg" 
                 loading='lazy'
               />
-              <div className='flex justify-between'>
+              <div className='flex justify-between my-4'>
                 <h2 className="text-xl font-semibold text-gray-800">
                   {show.title}
                 </h2>
                 <button onClick={(e) => { e.stopPropagation(); toggleLike(show.id); }}>
-                  {likedPodcasts.includes(show.id) ? <FcLike /> : <CiHeart />}
+                  {likedPodcasts.includes(show.id) 
+                  ? <FcLike className='text-3xl' /> 
+                  : <CiHeart className='text-3xl'/>}
                 </button>
               </div>
               <h2>

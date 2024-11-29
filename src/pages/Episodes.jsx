@@ -30,9 +30,9 @@ const Episodes = () => {
         );
       }
 
-      const backToEpisodes = ()=>{
-            navigate(`..`); 
-      }
+      const backToPodcasts = ()=>{
+        navigate(`..`); 
+    }
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
@@ -40,7 +40,7 @@ const Episodes = () => {
     <section className="mb-2">
         <button 
           className='underline p-6'
-          onClick={()=>backToEpisodes()}
+          onClick={()=>backToPodcasts()}
           
         >
             Back to Episodes
